@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "CarDetails";
+}
+
+@model CarDetailModel
+
+
+<div class="row">
+
+    <div class="col-md-3">
+        <img class="img-fluid" src="~/Images/@Model.ImageUrl" />
+    </div>
+    <div class="col-md-9">
+
+        <h5 class="mb-3 h5">@Model.BrandName </h5> <hr />
+        
+        <div class="mb-3">
+            <h3 class="text-muted h3">Renk: @Model.ColorName</h3>
+            <br>
+            <h3 class="text-muted h3">Model: @Model.ModelYear</h3>
+            <br>
+            <h4 class="text-primary mb-3">
+                <small class="text-muted">
+                    @Model.DailyPrice ₺
+                </small>
+            </h4>
+            <button type="submit" class="btn btn-primary btn-lg">Kirala</button>
+        </div>
+    </div>
+    <h5 class="mb-3 h5">Açıklama </h5> <hr />
+    <div class="row">
+        <div class="col-md-12 p-5">
+            <p class="p-3">@Html.Raw(@Model.Description)</p>@*Html.raw ckeditor için*@
+        </div>
+    </div>
+</div>
+
