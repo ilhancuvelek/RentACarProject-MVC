@@ -29,5 +29,6 @@ namespace Business.Abstract
         public List<Car> GetHomePageCars();
 
         public List<Car> GetSearchResult(string searchString);
+        public IDataResult<Car> GetProductDetails(string carNameUrl);
     }
 }

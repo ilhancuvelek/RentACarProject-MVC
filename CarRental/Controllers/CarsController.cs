@@ -31,19 +31,22 @@ namespace CarRental.Controllers
             };
             return View(carViewModel);
         }
-        [Route("car-detail/{id}")]
-        public IActionResult CarDetails(int id)
+        [Route("car-detail/{carNameUrl}")]
+        public IActionResult CarDetails(string carNameUrl)
         {
-            var car=_carService.GetCarDetailsById(id);
+            var car=_carService.GetProductDetails(carNameUrl);
             if (car.Success)
             {
                 return View(new CarDetailModel { 
+                    CarName=car.Data.CarName,
                     BrandName=car.Data.Brand.Name,
                     ColorName=car.Data.Color.Name,
                     DailyPrice=car.Data.DailyPrice,
                     Description=car.Data.Description,
                     ImageUrl = car.Data.ImageUrl,
-                    ModelYear = car.Data.ModelYear
+                    ModelYear = car.Data.ModelYear,
+                    Brand=car.Data.Brand,
+                    Color=car.Data.Color
                 }); 
             }
             return RedirectToAction("CarList");

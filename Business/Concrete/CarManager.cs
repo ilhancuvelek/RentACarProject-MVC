@@ -25,9 +25,9 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        [SecuredOperation("car.add,admin")]
+        //[SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
-        [CacheRemoveAspect("IProductService.Get")]
+        //[CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Car car)
         {
             IResult result=BusinessRules.Run(CheckIfCarCountOfBrandCorrect(car.BrandId));
@@ -89,6 +89,11 @@ namespace Business.Concrete
         public List<Car> GetHomePageCars()
         {
             return _carDal.GetHomePageCars();
+        }
+
+        public IDataResult<Car> GetProductDetails(string carNameUrl)
+        {
+            return new SuccessDataResult<Car> (_carDal.GetProductDetails(carNameUrl));
         }
 
         public List<Car> GetSearchResult(string searchString)

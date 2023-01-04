@@ -19,6 +19,8 @@ namespace DataAccess.Abstract
         List<Car> GetHomePageCars();
         List<Car> GetSearchResult(string searchString);
 
+        Car GetProductDetails(string carNameUrl);
+
 
     }
 }

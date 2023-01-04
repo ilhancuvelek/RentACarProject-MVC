@@ -48,6 +48,16 @@ namespace CarRental
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "admincaradd",
+                    pattern: "admin/cars/add",
+                    defaults: new { controller = "Admin", action = "CarAdd" }
+                );
+                endpoints.MapControllerRoute(
+                    name: "admincarlist",
+                    pattern: "admin/cars",
+                    defaults: new { controller = "Admin", action = "CarList" }
+                );
 
                 //ürün arama
                 endpoints.MapControllerRoute(

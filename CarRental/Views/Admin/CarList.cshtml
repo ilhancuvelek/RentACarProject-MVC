@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewData["Title"] = "CarList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model CarDetailList
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="h3">Admin Cars</h1>
+        <hr />
+        <a href="/admin/cars/add" class="btn btn-primary btn-sm">Add Car</a>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <td style="width:30px">Id</td>
+                    <td style="width:100px">Image</td>
+                    <td>Color</td>
+                    <td>Brand</td>
+                    <td style="width:20px">Daily Price</td>
+                    <td >IsHome</td>
+                    <td >IsApproved</td>
+                    <td style ="width:150px"></td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Cars.Count>0)
+                {
+                    @foreach (var item in Model.Cars)
+                    {
+                        <tr>
+                            <td>@item.CarId</td>
+                            <td><img src="~/Images/@item.ImageUrl" width="80" /></td>
+                            <td>@item.ColorName</td>
+                            <td>@item.BrandName</td>
+                            <td>@item.DailyPrice</td>
+                            <td>
+                                @if (item.IsHome)
+                                {
+                                    <i style="color:forestgreen" class="fas fa-check-circle"></i>
+                                }else{
+                                    <i style="color:red" class="fas fa-times-circle"></i>
+                                }
+                            </td>
+                            <td>
+                                @if (item.IsApproved)
+                                {
+                                    <i style="color:forestgreen" class="fas fa-check-circle"></i>
+                                }else{
+                                    <i style="color:red" class="fas fa-times-circle"></i>
+                                }
+                            </td>
+                            <td>
+                                <a href="/admin/cars/@item.CarId" class="btn btn-primary btn-sm mr-2">Edit</a>
+
+                                <form action="/admin/deletecar" method="post" style="display:inline;">
+                                    <input type="hidden" name="carId" value="@item.CarId">
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                                
+                            </td>
+                        </tr>
+                    }
+                }else{
+                    <div class="alert alert-warning">
+                        <h3>No Cars</h3>
+                    </div>
+                }
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -4,13 +4,13 @@
 <div class="card mb-2">
     <img class="card-img-top" src="~/Images/@Model.ImageUrl" alt="">
     <div class="card-body">
-        <h5 class="card-title">@Model.CarId</h5>
+        <h5 class="card-title">@Model.CarName</h5>
         <small class="text-muted">
             <i class="fas fa-lira-sign">@Model.DailyPrice</i>
         </small>
     </div>
     <div class="card-footer text-center">
-        <a href="car-detail/@Model.CarId" class="btn btn-primary btn-sm">Detaylar</a>
+        <a href="car-detail/@Model.Url" class="btn btn-primary btn-sm">Detaylar</a>
         <a class="btn btn-primary btn-sm">Kirala</a>
     </div>
 </div>
