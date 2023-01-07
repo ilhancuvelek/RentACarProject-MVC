@@ -170,6 +170,24 @@ namespace CarRental.Controllers
             }
             return View(carModel);
         }
-        
+        public IActionResult DeleteCar(int carId)
+        {
+            var car = _carService.GetById(carId);
+            if (car.Data != null)
+            {
+                _carService.Delete(car.Data);
+            }
+
+            //bilgilendirme mesajı
+            TempData.Put("message", new AlertMessage()
+            {
+                Title = "kayıt silindi",
+                Message = "kayıt silindi.",
+                AlertType = "danger"
+            });
+            //bilgilendirme mesajı -son-
+            return RedirectToAction("CarList");
+        }
+
     }
 }
