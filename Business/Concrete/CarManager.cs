@@ -101,11 +101,17 @@ namespace Business.Concrete
             return _carDal.GetSearchResult(searchString);
         }
 
-        [CacheRemoveAspect("IProductService.Get")]
+        //[CacheRemoveAspect("IProductService.Get")]
         public IResult Update(Car car)
         {
             _carDal.Update(car);
             return new SuccessResult(Messages.CarUpdated);
+        }
+
+        public IResult Update2(Car car)
+        {
+            _carDal.Update2(car);
+            return new SuccessResult(Messages.CarAdded);
         }
 
         // BUSİNESS RULES

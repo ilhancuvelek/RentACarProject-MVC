@@ -30,5 +30,6 @@ namespace Business.Abstract
 
         public List<Car> GetSearchResult(string searchString);
         public IDataResult<Car> GetProductDetails(string carNameUrl);
+        public IResult Update2(Car car);
     }
 }

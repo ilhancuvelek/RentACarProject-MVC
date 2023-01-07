@@ -91,5 +91,26 @@ namespace DataAccess.Concrete.Entityframework
                 return car;
             }
         }
+        public void Update2(Car car)
+        {
+            using (var context = new RentACarContext())
+            {
+                var entity = context.Cars.Where(c => c.CarId == car.CarId).FirstOrDefault();
+                if (entity != null)
+                {
+                    entity.CarName = car.CarName;
+                    entity.Description = car.Description;
+                    entity.DailyPrice = car.DailyPrice;
+                    entity.Url = car.Url;
+                    entity.ImageUrl = car.ImageUrl;
+                    entity.IsApproved = car.IsApproved;
+                    entity.IsHome = car.IsHome;
+                    entity.Brand = car.Brand;
+                    entity.Color = car.Color;
+                    entity.ModelYear = car.ModelYear;
+                    context.SaveChanges();
+                }
+            }
+        }
     }
 }

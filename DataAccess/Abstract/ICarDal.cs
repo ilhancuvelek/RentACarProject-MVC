@@ -20,6 +20,7 @@ namespace DataAccess.Abstract
         List<Car> GetSearchResult(string searchString);
 
         Car GetProductDetails(string carNameUrl);
+        void Update2(Car car);
 
 
     }
